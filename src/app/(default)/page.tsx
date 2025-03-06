@@ -1,5 +1,3 @@
-// import Image from "next/image";
-
 import PokemonCard from "@/components/card/PokemonCard";
 import AutoCompleteSearch from "@/components/input/AutoCompleteSearch";
 
