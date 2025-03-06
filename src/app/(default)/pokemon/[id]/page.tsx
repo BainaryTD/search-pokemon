@@ -6,7 +6,7 @@ import { gql, useQuery } from "@apollo/client";
 import { useParams, useRouter } from "next/navigation";
 import { Card, Skeleton, Tag, Spin } from "antd";
 
-const GET_POKEMON_DETAIL = gql`
+export const GET_POKEMON_DETAIL = gql`
   query GetPokemonDetail($id: String!) {
     pokemon(id: $id) {
       number
@@ -98,7 +98,7 @@ const PokemonDetail: React.FC = () => {
         <div className="mt-4">
           <h3 className="font-semibold">Types:</h3>
           {pokemon.types.map((type: string) => (
-            <Tag key={type}>{type}</Tag>
+            <Tag color={typeColors[type] || "red"} key={type}>{type}</Tag>
           ))}
         </div>
 

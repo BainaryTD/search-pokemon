@@ -37,9 +37,7 @@ const AutoCompleteSearch: React.FC = () => {
       );
     }
 
-    if (searchQuery) {
-      setSearchValue(searchQuery);
-    }
+    setSearchValue(searchQuery);
   }, [data, searchQuery]);
 
   const handleSearch = (value: string) => {
@@ -104,7 +102,7 @@ const AutoCompleteSearch: React.FC = () => {
         onKeyDown={handleKeyDown} // เพิ่มการตรวจสอบ Enter
         filterOption={false}
       />
-      <div className="space-x-2">
+      <div className="space-x-1">
         <Button type="primary" onClick={handleQueryChange}>
           Search
         </Button>
@@ -117,7 +115,7 @@ const AutoCompleteSearch: React.FC = () => {
             ล้าง
           </Button>
         )}
-        </div>
+      </div>
     </div>
   );
 };
