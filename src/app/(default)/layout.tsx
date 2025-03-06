@@ -57,7 +57,7 @@ export default function LayoutDefault({
       </Header>
 
       {/* Content */}
-      <Content className="px-12">
+      <Content className="px-4 sm:px-12">
         <div
           className="mt-4 p-6"
           style={{

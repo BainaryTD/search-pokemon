@@ -93,7 +93,7 @@ const AutoCompleteSearch: React.FC = () => {
   };
 
   return (
-    <div className="flex gap-2 items-center">
+    <div className="flex gap-2 items-center flex-wrap">
       <AutoComplete
         style={{ width: 200 }}
         options={options}
@@ -104,18 +104,20 @@ const AutoCompleteSearch: React.FC = () => {
         onKeyDown={handleKeyDown} // เพิ่มการตรวจสอบ Enter
         filterOption={false}
       />
-      <Button type="primary" onClick={handleQueryChange}>
-        Search
-      </Button>
-      {searchValue && (
-        <Button
-          type="default"
-          onClick={handleReset}
-          icon={<CloseCircleOutlined />}
-        >
-          ล้าง
+      <div>
+        <Button type="primary" onClick={handleQueryChange}>
+          Search
         </Button>
-      )}
+        {searchValue && (
+          <Button
+            type="default"
+            onClick={handleReset}
+            icon={<CloseCircleOutlined />}
+          >
+            ล้าง
+          </Button>
+        )}
+        </div>
     </div>
   );
 };
