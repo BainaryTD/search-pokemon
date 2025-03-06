@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import ApolloProviderWrapper from "@/lip/ApolloProviderWrapper";
+import { Suspense } from "react";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -52,11 +53,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ApolloProviderWrapper>
-          <AntdRegistry>{children}</AntdRegistry>
-        </ApolloProviderWrapper>
+        <Suspense fallback={<>Loading...</>}>
+          <ApolloProviderWrapper>
+            <AntdRegistry>{children}</AntdRegistry>
+          </ApolloProviderWrapper>
+        </Suspense>
       </body>
     </html>
   );
