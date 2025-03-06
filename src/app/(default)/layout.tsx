@@ -1,13 +1,21 @@
 "use client";
 import React from "react";
 import { Layout, Menu, theme } from "antd";
+import { HomeOutlined } from "@ant-design/icons";
+import { usePathname, useRouter } from "next/navigation";
+import Image from "antd";
+import logo from '@/../public/logo.png'
 
 const { Header, Content, Footer } = Layout;
 
-const items = Array.from({ length: 2 }).map((_, index) => ({
-  key: index + 1,
-  label: `nav ${index + 1}`,
-}));
+const items = [
+  {
+    key: "/",
+    icon: <HomeOutlined />,
+    label: "Home",
+    path: "/",
+  }
+];
 
 export default function LayoutDefault({
   children,
@@ -17,24 +25,28 @@ export default function LayoutDefault({
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+  const router = useRouter();
+  const pathname = usePathname();
 
   return (
     <Layout>
       {/* Header */}
-      {/* ใช้ Tailwind แทน inline style สำหรับการวาง layout (flex / align) */}
-      <Header className="flex items-center justify-between">
-        <div className="demo-logo" />
+      <Header className="flex items-center justify-between !bg-white">
+        <img src="/logo.png" alt="logo" style={{ height: 40 }} />
         <Menu
-          theme="dark"
+          theme="light"
           mode="horizontal"
-          defaultSelectedKeys={["2"]}
+          selectedKeys={[items.find(item => item.path === pathname)?.key || '']}
           items={items}
-          className="ml-auto w-full"
+          className="w-full !flex !justify-end"
+          onClick={(e) => {
+            const selectedItem = items.find((item) => item.key === e.key);
+            if (selectedItem) router.push(selectedItem.path);
+          }}
         />
       </Header>
 
       {/* Content */}
-      {/* ใช้ Tailwind จัด padding, margin, ฯลฯ แล้วแทรก Style เฉพาะค่า Theme ที่มาแบบไดนามิก */}
       <Content className="px-12">
         <div
           className="mt-4 p-6"
@@ -49,7 +61,6 @@ export default function LayoutDefault({
       </Content>
 
       {/* Footer */}
-      {/* ใช้ Tailwind สำหรับ text-center หรือ spacing ได้ */}
       <Footer className="text-center">
         Search Pokemon ©{new Date().getFullYear()} Created by Bainary
       </Footer>
