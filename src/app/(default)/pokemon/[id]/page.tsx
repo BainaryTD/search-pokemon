@@ -6,7 +6,7 @@ import { gql, useQuery } from "@apollo/client";
 import { useParams, useRouter } from "next/navigation";
 import { Card, Skeleton, Tag, Spin } from "antd";
 
-export const GET_POKEMON_DETAIL = gql`
+const GET_POKEMON_DETAIL = gql`
   query GetPokemonDetail($id: String!) {
     pokemon(id: $id) {
       number

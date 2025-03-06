@@ -2,14 +2,43 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import { MockedProvider } from '@apollo/client/testing';
-import PokemonDetail, { GET_POKEMON_DETAIL } from '@/app/(default)/pokemon/[id]/page';
+import PokemonDetail from '@/app/(default)/pokemon/[id]/page';
 import { useParams } from 'next/navigation';
+import { gql } from '@apollo/client';
 
 jest.mock('next/navigation', () => ({
     useParams: jest.fn(),
     useRouter: jest.fn().mockReturnValue({ push: jest.fn() }),
 }));
 
+const GET_POKEMON_DETAIL = gql`
+  query GetPokemonDetail($id: String!) {
+    pokemon(id: $id) {
+      number
+      name
+      weight { minimum maximum }
+      height { minimum maximum }
+      classification
+      types
+      resistant
+      weaknesses
+      fleeRate
+      maxCP
+      attacks {
+        fast { name type damage }
+        special { name type damage }
+      }
+      evolutions {
+        id
+        number
+        name
+        image
+        types
+      }
+      image
+    }
+  }
+`;
 
 const mocks = [
     {
