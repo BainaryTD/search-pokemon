@@ -44,3 +44,25 @@ Clone the repository and install dependencies:
 git clone https://github.com/your-username/search-pokemon.git
 cd search-pokemon
 npm install
+```
+
+## 🏃 Running the App
+Run development server:
+
+```bash
+npm run dev
+Open http://localhost:3000
+```
+![alt text](image.png)
+
+## ✅ Running Tests
+Run unit tests:
+
+```bash
+npm run test
+```
+
+## Contact
+BainaryTD
+Email: tpk.devx@gmail.com
+GitHub: BainaryTD
