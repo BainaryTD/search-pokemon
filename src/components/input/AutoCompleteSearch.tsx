@@ -104,7 +104,7 @@ const AutoCompleteSearch: React.FC = () => {
         onKeyDown={handleKeyDown} // เพิ่มการตรวจสอบ Enter
         filterOption={false}
       />
-      <div>
+      <div className="space-x-2">
         <Button type="primary" onClick={handleQueryChange}>
           Search
         </Button>
