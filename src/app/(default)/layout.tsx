@@ -3,8 +3,9 @@ import React from "react";
 import { Layout, Menu, theme } from "antd";
 import { HomeOutlined } from "@ant-design/icons";
 import { usePathname, useRouter } from "next/navigation";
-import Image from "antd";
 import logo from '@/../public/logo.png'
+import Link from "next/link";
+import Image from 'next/image'
 
 const { Header, Content, Footer } = Layout;
 
@@ -28,11 +29,20 @@ export default function LayoutDefault({
   const router = useRouter();
   const pathname = usePathname();
 
+
   return (
     <Layout>
       {/* Header */}
       <Header className="flex items-center justify-between !bg-white">
-        <img src="/logo.png" alt="logo" style={{ height: 40 }} />
+        <Link href="/">
+          <Image
+            src={logo}
+            alt="logo"
+            height={142}
+            width={355}
+            style={{ cursor: 'pointer', height: '40px', width: 'auto' }}
+          />
+        </Link>
         <Menu
           theme="light"
           mode="horizontal"

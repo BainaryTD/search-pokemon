@@ -60,17 +60,25 @@ const PokemonDetail: React.FC = () => {
   const rawId = params.id as string;
   const router = useRouter();
 
-  // decodeURIComponent ก็พอ ไม่ต้องใช้ atob แล้ว!
   const decodedId = decodeURIComponent(rawId);
 
   const { loading, error, data } = useQuery(GET_POKEMON_DETAIL, {
     variables: { id: decodedId },
   });
 
-  if (loading) return <Spin size="large" className="flex justify-center my-6" />;
+  if (loading)
+    return (
+      <div className="flex justify-center items-center my-6">
+        <Spin size="large" />
+      </div>
+    );
   if (error) return <p className="text-red-500">Error: {error.message}</p>;
 
-  const pokemon = data.pokemon;
+  const pokemon = data?.pokemon;
+
+  if (!pokemon) {
+    return <p className="text-center text-lg my-10">Pokémon not found.</p>;
+  }
 
   return (
     <div className="max-w-2xl mx-auto py-6">
@@ -136,5 +144,6 @@ const PokemonDetail: React.FC = () => {
     </div>
   );
 };
+
 
 export default PokemonDetail;
