@@ -95,7 +95,7 @@ const AutoCompleteSearch: React.FC = () => {
       <AutoComplete
         style={{ width: 200 }}
         options={options}
-        placeholder="ค้นหาโปเกมอน"
+        placeholder="Search Pokémon"
         value={searchValue}
         onSearch={handleSearch}
         onSelect={handleSelect}
@@ -112,7 +112,7 @@ const AutoCompleteSearch: React.FC = () => {
             onClick={handleReset}
             icon={<CloseCircleOutlined />}
           >
-            ล้าง
+            Clear
           </Button>
         )}
       </div>
